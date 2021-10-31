@@ -12,19 +12,23 @@ const AddUser = (props) => {
     event.preventDefault();
     console.log(!enterUsername);
     // no username
-    if (enterUsername.trim().length===0) {
+    if (enterUsername.trim().length === 0) {
       setIsShowNameError(true);
     }
     // no age
-    if (enterAge<0) {
+    if (enterAge <= 0) {
       setIsShowAgeError(() => true);
     }
     // All OK
-    if (enterUsername && enterAge) {
+    if (enterUsername.trim().length > 0 && enterAge > 0) {
       console.log(enterUsername, enterAge);
       console.log("ready to submit");
       setEnterUsername("");
       setEnterAge("");
+      let item = { name: enterUsername, age: enterAge,id:Math.random().toString() };
+
+      // trigger Event to notify parent component
+      props.onAddUser(item);
     }
   };
 

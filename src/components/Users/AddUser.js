@@ -12,12 +12,11 @@ const AddUser = (props) => {
     event.preventDefault();
     console.log(!enterUsername);
     // no username
-    if (!enterUsername) {
-      console.log("hello");
+    if (enterUsername.trim().length===0) {
       setIsShowNameError(true);
     }
     // no age
-    if (!enterAge) {
+    if (enterAge<0) {
       setIsShowAgeError(() => true);
     }
     // All OK
@@ -55,6 +54,7 @@ const AddUser = (props) => {
           value={enterUsername}
           className={isShowNameError ? classes.error : null}
           onChange={usernameChangeHandler}
+          required
         />
         <label htmlFor="age">Age(Years)</label>
         <input
@@ -63,6 +63,7 @@ const AddUser = (props) => {
           value={enterAge}
           className={isShowAgeError ? classes.error : null}
           onChange={ageChangeHandler}
+          required
         />
         <Button type="submit">Add User</Button>
       </form>

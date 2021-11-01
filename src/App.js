@@ -17,10 +17,10 @@ function App() {
 
 
   return (
-    <Card>
+    <React.Fragment>
       <AddUser onAddUser={handleAddUser}/>
       <UsersList users={database} />
-    </Card>
+    </React.Fragment>
   )
 }
 
